@@ -123,6 +123,7 @@ body {
     padding: 80px;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 44vw;
 }
 
 .section_frontpage p {
@@ -143,7 +144,6 @@ body {
     text-align: right;
     position: relative;
     z-index: 5;
-    height: 44vw;
     color: var(--main-bg-color);
     /*
     vmin
@@ -156,13 +156,17 @@ body {
     color: var(--main-bg-color);
 }
 
+#first_section_frontpage button:hover {
+    color: var(--split-red-color);
+    background-color: var(--main-bg-color);
+}
+
 #second_section_frontpage {
     overflow-y: visible;
     position: relative;
     z-index: 4;
-    height: 44vw;
-    margin-top: -6vw;
-    padding-top: 12vw;
+    margin-top: -9vw;
+    padding-top: 15vw;
     padding-bottom: 7vw;
     color: var(--split-turquoise-color);
 
@@ -178,6 +182,11 @@ body {
     color: var(--split-turquoise-color);
 }
 
+#second_section_frontpage button:hover {
+    color: var(--main-bg-color);
+    background-color: var(--split-turquoise-color);
+}
+
 #second_section_frontpage .col_big {
     margin-left: 15%;
 }
@@ -187,7 +196,6 @@ body {
     position: relative;
     text-align: right;
     z-index: 1;
-    height: 44vw;
     margin-top: -6vw;
     padding-top: 12vw;
     padding-bottom: 12vw;
@@ -206,6 +214,11 @@ body {
     margin-bottom: 6vw;
 }
 
+#third_section_frontpage button:hover {
+    color: var(--main-bg-color);
+    background-color: var(--split-orange-color);
+}
+
 #third_section_frontpage .col_big {
     margin-right: 15%;
 }
@@ -214,7 +227,6 @@ body {
     overflow-y: visible;
     position: relative;
     z-index: 1;
-    height: 44vw;
     margin-top: 10vw;
     padding-top: 14vw;
     padding-bottom: 0vw;
@@ -229,7 +241,11 @@ body {
 #fourth_section_frontpage button {
     border: 2px solid var(--split-red-color);
     color: var(--split-red-color);
+}
 
+#fourth_section_frontpage button:hover {
+    color: var(--main-bg-color);
+    background-color: var(--split-red-color);
 }
 
 /* statisk billede */
@@ -247,6 +263,130 @@ body {
     width: 60%;
 
 }
+
+/* Media queries */
+
+/* Pc responsivitet */
+
+@media screen and (max-width: 1500px) {
+    #third_section_frontpage button {
+        margin-top: 10vw;
+    }
+
+    #front_text_small_video_section {
+        position: relative;
+        margin-top: -10%;
+        margin-left: 10.5%;
+        font-size: 16px;
+
+    }
+
+    #first_section_frontpage {
+        margin-top: -15px;
+    }
+}
+
+/* Pc responsivitet */
+
+@media screen and (max-width: 1100px) {
+    #third_section_frontpage button {
+        margin-top: 1vw;
+    }
+
+    .section_frontpage {
+        padding: 30px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .section_frontpage p {
+        font-size: 18px;
+    }
+
+    .section_frontpage h2 {
+        font-size: 28px;
+    }
+
+    .section_frontpage button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+/* Tablet responsivitet */
+
+@media screen and (max-width: 768px) {
+
+    .col_container {
+        flex-direction: column;
+    }
+
+    .col {
+        margin: 0;
+    }
+
+    #first_section_frontpage .col,
+    #third_section_frontpage .col {
+        margin-left: 30%;
+    }
+
+    #second_section_frontpage .col,
+    #fourth_section_frontpage .col {
+        margin-right: 30%;
+    }
+
+    #second_section_frontpage button,
+    #third_section_frontpage button,
+    #fourth_section_frontpage button {
+        margin: 10% 0;
+    }
+
+    #second_section_frontpage,
+    #third_section_frontpage {
+        margin-top: -10%;
+    }
+
+    .section_frontpage {
+        height: 105vw;
+    }
+
+    #static_image {
+        /*position: fixed; */
+        width: 100%;
+        margin-left: 10%;
+
+    }
+
+    #first_section_frontpage {
+        margin-top: -30px;
+    }
+
+    #second_section_frontpage {
+        margin-top: -80px;
+    }
+}
+
+/* Mobil responsivitet */
+
+@media screen and (max-width: 600px) {
+    .section_frontpage {
+        height: 115vw;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .section_frontpage {
+        height: 145vw;
+    }
+
+    #first_section_frontpage {
+        height: 125vw;
+    }
+
+}
+
+/* billedebredde er altid 100% medmindre andet er specificeret */
 
 img {
     width: 100%;
