@@ -37,8 +37,10 @@ p {
 }
 
 button {
-    padding: 10px 20px;
-    font-weight: 600;
+    padding: 15px 40px;
+    font-weight: 700;
+    font-size: 18px;
+    /* denne farve er 100% gennemsigtig*/
     background-color: hsla(290, 60%, 100%, 0);
 }
 
@@ -85,10 +87,13 @@ body {
 
 #bg_video_section {
     margin-bottom: 12.5%;
+    position: relative;
+    z-index: 2;
 }
 
 #bg_video {
     width: 100%;
+
 }
 
 #front_text_video_section {
@@ -112,7 +117,6 @@ body {
 .col_big {
     flex-grow: 2;
     flex-basis: 1px;
-    margin: 0 30px;
 }
 
 .section_frontpage {
@@ -121,18 +125,25 @@ body {
     background-size: cover;
 }
 
+.section_frontpage p {
+    font-size: 22px;
+}
+
 .section_frontpage h2 {
     font-size: 3vw;
+}
+
+.frontpage_button {
+    margin-top: 6vw;
 }
 
 /* første sektion */
 
 #first_section_frontpage {
     text-align: right;
-    overflow-y: visible;
     position: relative;
     z-index: 5;
-    height: 90vh;
+    height: 44vw;
     color: var(--main-bg-color);
     /*
     vmin
@@ -149,11 +160,12 @@ body {
     overflow-y: visible;
     position: relative;
     z-index: 4;
-    height: 90vh;
-    margin-top: -12vh;
-    padding-top: 20vh;
-    padding-bottom: 20vh;
+    height: 44vw;
+    margin-top: -6vw;
+    padding-top: 12vw;
+    padding-bottom: 7vw;
     color: var(--split-turquoise-color);
+
     /*
     vmin
     vmax
@@ -166,14 +178,19 @@ body {
     color: var(--split-turquoise-color);
 }
 
+#second_section_frontpage .col_big {
+    margin-left: 15%;
+}
+
 #third_section_frontpage {
     overflow-y: visible;
     position: relative;
+    text-align: right;
     z-index: 1;
-    height: 90vh;
-
-    padding-top: 20vh;
-    padding-bottom: 30vh;
+    height: 44vw;
+    margin-top: -6vw;
+    padding-top: 12vw;
+    padding-bottom: 12vw;
     color: var(--split-orange-color);
     /*
     vmin
@@ -185,16 +202,22 @@ body {
 #third_section_frontpage button {
     border: 2px solid var(--split-orange-color);
     color: var(--split-orange-color);
+    margin-top: 21vw;
+    margin-bottom: 6vw;
+}
+
+#third_section_frontpage .col_big {
+    margin-right: 15%;
 }
 
 #fourth_section_frontpage {
     overflow-y: visible;
     position: relative;
     z-index: 1;
-    height: 90vh;
-
-    padding-top: 20vh;
-    padding-bottom: 30vh;
+    height: 44vw;
+    margin-top: 10vw;
+    padding-top: 14vw;
+    padding-bottom: 0vw;
     color: var(--split-red-color);
     /*
     vmin
@@ -206,17 +229,22 @@ body {
 #fourth_section_frontpage button {
     border: 2px solid var(--split-red-color);
     color: var(--split-red-color);
+
 }
 
 /* statisk billede */
 
 #static_image_container {
-    position: relative;
-    top: 2000px;
+    position: fixed;
+    background-color: var(--secondary-bg-color);
+    width: 100%;
+
 }
 
 #static_image {
-    position: fixed;
+    /*position: fixed; */
+    margin-left: 20%;
+    width: 60%;
 
 }
 
