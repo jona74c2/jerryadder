@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="DA">
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Baumans|Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerry Adder | Maler &#38; Skulptør</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <nav class="main_menu">
+
+    </nav>
+
+    <section id="first_section_art" class="section_art">
+        <img class="art_img" src="" alt="">
+        <h2 class="art_h2"></h2>
+        <p class="art_p"></p>
+    </section>
+
+    <section id="second_section_art" class="section_art">
+        <img class="art_img" src="" alt="">
+        <h2 class="art_h2"></h2>
+        <p class="art_p"></p>
+    </section>
+
+    <section id="third_section_art" class="section_art">
+        <img class="art_img" src="" alt="">
+        <h2 class="art_h2"></h2>
+        <p class="art_p"></p>
+    </section>
+
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", start);
+
+    //document.querySelector("left_container").addEventListener("click", openNScroll);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+
+    let content = [];
+    let contentArray = [];
+    let imgCounter = 0;
+
+    function start() {
+        getJson();
+        /*setDots();
+        setBlueDot(imgCounter);
+        getFooter();
+        */
+    }
+
+    async function getJson() {
+        //getMenu();
+        const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/kunst";
+        let myJson = await fetch(url);
+        content = await myJson.json();
+
+        visIndhold();
+    }
+
+    async function getMenu() {
+        const thisNav = await fetch("mainnavigation.html");
+        let fetchedNav = await thisNav.text();
+        document.querySelector(".main_menu").innerHTML = fetchedNav;
+        document.querySelector(".burger_icon").addEventListener("click", function() {
+            displayListItems(".burger_item");
+        });
+
+        document.querySelector("#list_item_bikes").addEventListener("click", function() {
+            displayListItems("#dropdown-content1");
+        });
+        document.querySelector("#dropbtn2").addEventListener("click", function() {
+            displayListItems("#dropdown-content2");
+        });
+
+
+    }
+
+    async function getFooter() {
+        const thisFooter = await fetch("footer.html");
+        let fetchedFooter = await thisFooter.text();
+        document.querySelector("footer").innerHTML = fetchedFooter;
+    }
+
+    function visIndhold() {
+
+        //De forskellige sektioner på kunstsiden tages på en gang med et loop
+        document.querySelectorAll(".section_art").forEach((sektion, i) => {
+            sektion.querySelector("img").src = content[0]["sektion_billede" + (i + 1)].guid;
+            sektion.querySelector("h2").textContent = content[0]["sektion_overskrift" + (i + 1)];
+            sektion.querySelector("p").textContent = content[0]["sektion_tekst" + (i + 1)];
+        })
+
+    }
+
+    function setBlueDot(blue) {
+        document.querySelectorAll(".dot").forEach((dot, i) => {
+            dot.src = "img/dot.svg";
+            if (blue == i) {
+                dot.src = "img/bluedot.svg";
+            }
+        })
+    }
+
+    function setDots() {
+        document.querySelectorAll(".dot").forEach((dot, i) => {
+            dot.addEventListener("click", dotSwitch);
+        })
+
+    }
+
+    function dotSwitch() {
+        imgCounter = this.id.substring(3, this.id.length) - 1;
+        switchImg();
+    }
+
+    function switchImg() {
+
+        document.querySelectorAll(".swipeimg_container").forEach((img, i) => {
+            img.classList = "swipeimg_container hide";
+            if (imgCounter == i) {
+                img.classList = "swipeimg_container";
+            }
+        })
+
+        setBlueDot(imgCounter);
+    }
+
+    function displayItem(s) {
+        let x = document.querySelectorAll(`${s}`);
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+
+    function displayListItems(s) {
+        document.querySelectorAll(`${s}`).forEach((x, i) => {
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        })
+
+    }
+    //.dropdown
+
+</script>

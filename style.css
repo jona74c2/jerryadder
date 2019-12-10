@@ -264,11 +264,52 @@ body {
 
 }
 
+/* Kunst side */
+
+.section_art {
+    color: var(--main-bg-color);
+
+}
+
+.art_h2,
+.art_p {
+    margin: 0 10%;
+}
+
+.art_h2 {
+    margin-top: -10%;
+    font-size: 48px;
+}
+
+.art_p {
+    font-size: 22px;
+    margin-top: 0.5%;
+    margin-right: 55%;
+}
+
+#first_section_art {}
+
+#second_section_art {
+    text-align: right;
+    padding-top: 10%;
+}
+
+#second_section_art .art_p {
+    margin-right: 10%;
+    margin-left: 55%;
+}
+
+#third_section_art {
+    padding-top: 10%;
+}
+
 /* Media queries */
 
 /* Pc responsivitet */
 
 @media screen and (max-width: 1500px) {
+
+    /* forsiden */
     #third_section_frontpage button {
         margin-top: 10vw;
     }
@@ -284,11 +325,20 @@ body {
     #first_section_frontpage {
         margin-top: -15px;
     }
+
+    /* kunstsiden */
+
+    #second_section_art .art_h2 {
+        margin-top: -13%;
+    }
 }
 
 /* Pc responsivitet */
 
 @media screen and (max-width: 1100px) {
+
+    /* Forsiden */
+
     #third_section_frontpage button {
         margin-top: 1vw;
     }
@@ -311,12 +361,53 @@ body {
         font-size: 16px;
         padding: 10px 20px;
     }
+
+    /* kunstsiden */
+
+    #first_section_art .art_h2 {
+        margin-top: -130px;
+    }
+
+    #second_section_art .art_h2 {
+        margin-top: -120px;
+    }
+
+    #third_section_art .art_h2 {
+        margin-top: -100px;
+    }
+
+    .art_h2 {
+        font-size: 32px;
+    }
+
+    .art_p {
+        font-size: 18px;
+    }
+
+    .art_img {
+        height: 150px;
+    }
+
+    .art_p {
+        margin-right: 45%;
+    }
+
+
+    #second_section_art {
+        text-align: right;
+        padding-top: 10%;
+    }
+
+    #second_section_art .art_p {
+        margin-left: 40%;
+    }
 }
 
 /* Tablet responsivitet */
 
 @media screen and (max-width: 768px) {
 
+    /* forside */
     .col_container {
         flex-direction: column;
     }
@@ -363,6 +454,11 @@ body {
 
     #second_section_frontpage {
         margin-top: -80px;
+    }
+
+    /* kunst side */
+    #second_section_art .art_p {
+        margin-left: 50%;
     }
 }
 
