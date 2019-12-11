@@ -303,6 +303,34 @@ body {
     padding-top: 10%;
 }
 
+/* Kunsten på kunstsiden */
+
+.art_list {
+    margin-top: 7%;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: grid;
+    grid-gap: 2%;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: -7%;
+
+}
+
+.art_item_img_container {
+    height: 300px;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.art_item_headline {
+    margin-top: -50px;
+    margin-left: 25px;
+    color: var(--main-bg-color);
+}
+
+
 /* Media queries */
 
 /* Pc responsivitet */
@@ -330,6 +358,10 @@ body {
 
     #second_section_art .art_h2 {
         margin-top: -13%;
+    }
+
+    .art_item_img_container {
+        height: 250px;
     }
 }
 
@@ -401,6 +433,10 @@ body {
     #second_section_art .art_p {
         margin-left: 40%;
     }
+
+    .art_item_img_container {
+        height: 200px;
+    }
 }
 
 /* Tablet responsivitet */
@@ -460,6 +496,16 @@ body {
     #second_section_art .art_p {
         margin-left: 50%;
     }
+
+    .art_list {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5%;
+    }
+
+    .art_item_img_container {
+        height: 200px;
+
+    }
 }
 
 /* Mobil responsivitet */
@@ -467,6 +513,20 @@ body {
 @media screen and (max-width: 600px) {
     .section_frontpage {
         height: 115vw;
+    }
+
+    .art_list {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 2%;
+        margin-top: 13%;
+    }
+
+    .art_item_img_container {
+        height: 300px;
+    }
+
+    #art_paintings_list {
+        margin-bottom: 90px;
     }
 
 }
@@ -478,6 +538,10 @@ body {
 
     #first_section_frontpage {
         height: 125vw;
+    }
+
+    .art_item_img_container {
+        height: 200px;
     }
 
 }

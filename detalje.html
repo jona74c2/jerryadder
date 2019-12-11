@@ -15,86 +15,11 @@
 
     </nav>
 
-    <div id="static_image_container">
-        <img id="static_image" src="" alt="">
-    </div>
-
-    <section id="bg_video_section">
-        <video id="bg_video" autoplay muted loop>
-            <source src="" type="video/mp4">
-        </video>
-        <h1 id="front_text_video_section"></h1>
-        <h6 id="front_text_small_video_section"></h6>
+    <section id="first_section_art" class="section_art">
+        <img class="art_img" src="" alt="">
+        <h2 class="art_h2"></h2>
+        <p class="art_p"></p>
     </section>
-
-
-    <section id="first_section_frontpage" class="section_frontpage">
-        <div class="col_container">
-            <div class="col_big">
-                <img class="frontpage_img" src="" alt="">
-            </div>
-            <div class="col">
-                <h2 class="frontpage_h2"></h2>
-                <p class="frontpage_p"></p>
-                <button class="frontpage_button">tekst</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="second_section_frontpage" class="section_frontpage">
-        <div class="col_container">
-            <div class="col">
-                <h2 class="frontpage_h2"></h2>
-                <p class="frontpage_p"></p>
-                <button class="frontpage_button">tekst</button>
-            </div>
-            <div class="col_big">
-                <img class="frontpage_img" src="" alt="">
-            </div>
-        </div>
-    </section>
-
-
-
-    <section id="third_section_frontpage" class="section_frontpage">
-        <div class="col_container">
-            <div class="col_big">
-                <img class="frontpage_img" src="" alt="">
-            </div>
-            <div class="col">
-                <button class="frontpage_button">tekst</button>
-                <h2 class="frontpage_h2"></h2>
-                <p class="frontpage_p"></p>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="fourth_section_frontpage" class="section_frontpage">
-        <div class="col_container">
-            <div class="col">
-                <h2 class="frontpage_h2"></h2>
-                <p class="frontpage_p"></p>
-                <button class="frontpage_button">tekst</button>
-            </div>
-            <div class="col_big">
-                <img class="frontpage_img" src="" alt="">
-            </div>
-
-        </div>
-    </section>
-
-    <!--
-        <div id="dot_container">
-            <img class="dot" id="dot1" src="img/dot.svg" alt="">
-            <img class="dot" id="dot2" src="img/dot.svg" alt="">
-            <img class="dot" id="dot3" src="img/dot.svg" alt="">
-            <img class="dot" id="dot4" src="img/dot.svg" alt="">
-            <img class="dot" id="dot5" src="img/dot.svg" alt="">
-        </div>
--->
-
-
 
     <footer>
 
@@ -110,12 +35,21 @@
 
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
+    const type = urlParams.get("type");
 
     let content = [];
     let contentArray = [];
     let imgCounter = 0;
+    let bronze = [];
+    let paintings = [];
+    let marbles = [];
 
     function start() {
+        console.log("type: " + type);
+        console.log("id: " + id);
+        if (type == "bronze") {
+            getBronze();
+        }
         getJson();
         /*setDots();
         setBlueDot(imgCounter);
@@ -125,11 +59,31 @@
 
     async function getJson() {
         //getMenu();
-        const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/forside";
+        const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/kunst";
         let myJson = await fetch(url);
         content = await myJson.json();
-
         visIndhold();
+    }
+
+    async function getMarbles() {
+        //getMenu();
+        const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/skulptur";
+        let myJson = await fetch(url);
+        marbles = await myJson.json();
+    }
+
+    async function getPaintings() {
+        //getMenu();
+        const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/maleri";
+        let myJson = await fetch(url);
+        paintings = await myJson.json();
+    }
+
+    async function getBronze() {
+        //getMenu();
+        const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/bronzeskulptur";
+        let myJson = await fetch(url);
+        bronze = await myJson.json();
     }
 
     async function getMenu() {
@@ -157,58 +111,17 @@
     }
 
     function visIndhold() {
+        //De forskellige sektioner på kunstsiden tages på en gang med et loop
+        document.querySelectorAll(".section_art").forEach((sektion, i) => {
+            sektion.querySelector("img").src = content[0]["sektion_billede" + (i + 1)].guid;
+            sektion.querySelector("h2").textContent = content[0]["sektion_overskrift" + (i + 1)];
+            sektion.querySelector("p").textContent = content[0]["sektion_tekst" + (i + 1)];
 
-        //Video på forside med tilhørende tekst
-        document.querySelector("#bg_video").src = content[0].baggrundsvideo.guid;
-        document.querySelector("#front_text_video_section").textContent = content[0].videotekst_stor;
-        document.querySelector("#front_text_small_video_section").textContent = content[0].videotekst_lille;
-
-        //De forskellige sektioner på forsiden tages på en gang med et loop
-        document.querySelectorAll(".section_frontpage").forEach((sektion, i) => {
-            sektion.style.backgroundImage = `url(${content[0]["baggrundsbillede" + (i + 1)].guid})`;
-            sektion.querySelector("img").src = content[0]["billede" + (i + 1)].guid;
-            sektion.querySelector("h2").textContent = content[0]["overskrift" + (i + 1)];
-            sektion.querySelector("p").textContent = content[0]["tekst" + (i + 1)];
-            sektion.querySelector("button").textContent = content[0]["knap" + (i + 1)];
-        })
-
-        //Det statiske billede tildeles en src
-        document.querySelector("#static_image").src = content[0].statisk_billede.guid;
-
-    }
-
-    function setBlueDot(blue) {
-        document.querySelectorAll(".dot").forEach((dot, i) => {
-            dot.src = "img/dot.svg";
-            if (blue == i) {
-                dot.src = "img/bluedot.svg";
-            }
-        })
-    }
-
-    function setDots() {
-        document.querySelectorAll(".dot").forEach((dot, i) => {
-            dot.addEventListener("click", dotSwitch);
         })
 
     }
 
-    function dotSwitch() {
-        imgCounter = this.id.substring(3, this.id.length) - 1;
-        switchImg();
-    }
 
-    function switchImg() {
-
-        document.querySelectorAll(".swipeimg_container").forEach((img, i) => {
-            img.classList = "swipeimg_container hide";
-            if (imgCounter == i) {
-                img.classList = "swipeimg_container";
-            }
-        })
-
-        setBlueDot(imgCounter);
-    }
 
     function displayItem(s) {
         let x = document.querySelectorAll(`${s}`);

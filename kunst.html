@@ -21,11 +21,15 @@
         <p class="art_p"></p>
     </section>
 
+    <section class="art_list" id="art_marbles_list"></section>
+
     <section id="second_section_art" class="section_art">
         <img class="art_img" src="" alt="">
         <h2 class="art_h2"></h2>
         <p class="art_p"></p>
     </section>
+
+    <section class="art_list" id="art_paintings_list"></section>
 
     <section id="third_section_art" class="section_art">
         <img class="art_img" src="" alt="">
@@ -33,13 +37,22 @@
         <p class="art_p"></p>
     </section>
 
+    <section class="art_list" id="art_bronze_list"></section>
+
+    <template class="art_template">
+        <article class="art_list_item">
+            <div class="art_item_container">
+                <div class="art_item_img_container"></div>
+                <!-- <img class="art_marbles_image" src="" alt="">-->
+                <h2 class="art_item_headline"></h2>
+            </div>
+        </article>
+    </template>
 
     <footer>
 
     </footer>
-</body>
-
-</html>
+</body></html>
 
 <script>
     document.addEventListener("DOMContentLoaded", start);
@@ -52,6 +65,9 @@
     let content = [];
     let contentArray = [];
     let imgCounter = 0;
+    let bronze = [];
+    let paintings = [];
+    let marbles = [];
 
     function start() {
         getJson();
@@ -66,6 +82,33 @@
         const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/kunst";
         let myJson = await fetch(url);
         content = await myJson.json();
+
+        getMarbles();
+    }
+
+    async function getMarbles() {
+        //getMenu();
+        const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/skulptur";
+        let myJson = await fetch(url);
+        marbles = await myJson.json();
+
+        getPaintings();
+    }
+
+    async function getPaintings() {
+        //getMenu();
+        const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/maleri";
+        let myJson = await fetch(url);
+        paintings = await myJson.json();
+
+        getBronze();
+    }
+
+    async function getBronze() {
+        //getMenu();
+        const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/bronzeskulptur";
+        let myJson = await fetch(url);
+        bronze = await myJson.json();
 
         visIndhold();
     }
@@ -95,48 +138,58 @@
     }
 
     function visIndhold() {
-
         //De forskellige sektioner på kunstsiden tages på en gang med et loop
         document.querySelectorAll(".section_art").forEach((sektion, i) => {
+            console.log("i: " + i);
             sektion.querySelector("img").src = content[0]["sektion_billede" + (i + 1)].guid;
             sektion.querySelector("h2").textContent = content[0]["sektion_overskrift" + (i + 1)];
             sektion.querySelector("p").textContent = content[0]["sektion_tekst" + (i + 1)];
-        })
+            console.log("i: " + i);
+            if (i == 0) {
+                marbles.forEach((marble, i) => {
+                    console.log(marble);
+                    console.log(marble.stort_billede.guid);
+                    const clone = document.querySelector(".art_template").cloneNode(true).content;
+                    clone.querySelector(".art_item_img_container").style.backgroundImage = `url(${marble.stort_billede.guid})`;
+                    clone.querySelector("h2").textContent = marble.navn;
+                    document.querySelector("#art_marbles_list").appendChild(clone);
 
-    }
+                    document.querySelector("#art_marbles_list").lastElementChild.addEventListener("click", () => {
+                        location.href = `detalje.html?id=${marble.id}`;
+                    });
+                })
+            }
 
-    function setBlueDot(blue) {
-        document.querySelectorAll(".dot").forEach((dot, i) => {
-            dot.src = "img/dot.svg";
-            if (blue == i) {
-                dot.src = "img/bluedot.svg";
+            if (i == 1) {
+                paintings.forEach((painting, i) => {
+                    const clone = document.querySelector(".art_template").cloneNode(true).content;
+                    clone.querySelector(".art_item_img_container").style.backgroundImage = `url(${painting.stort_billede.guid})`;
+                    clone.querySelector("h2").textContent = painting.navn;
+                    document.querySelector("#art_paintings_list").appendChild(clone);
+
+                    document.querySelector("#art_paintings_list").lastElementChild.addEventListener("click", () => {
+                        location.href = `detalje.html?id=${painting.id}`;
+                    });
+                })
+            }
+
+                        if (i == 2) {
+                bronze.forEach((bronzeSculpture, i) => {
+                    const clone = document.querySelector(".art_template").cloneNode(true).content;
+                    clone.querySelector(".art_item_img_container").style.backgroundImage = `url(${bronzeSculpture.stort_billede.guid})`;
+                    clone.querySelector("h2").textContent = bronzeSculpture.navn;
+                    document.querySelector("#art_bronze_list").appendChild(clone);
+
+                    document.querySelector("#art_bronze_list").lastElementChild.addEventListener("click", () => {
+                        location.href = `detalje.html?id=${bronzeSculpture.id}&type=bronze`;
+                    });
+                })
             }
         })
-    }
-
-    function setDots() {
-        document.querySelectorAll(".dot").forEach((dot, i) => {
-            dot.addEventListener("click", dotSwitch);
-        })
 
     }
 
-    function dotSwitch() {
-        imgCounter = this.id.substring(3, this.id.length) - 1;
-        switchImg();
-    }
 
-    function switchImg() {
-
-        document.querySelectorAll(".swipeimg_container").forEach((img, i) => {
-            img.classList = "swipeimg_container hide";
-            if (imgCounter == i) {
-                img.classList = "swipeimg_container";
-            }
-        })
-
-        setBlueDot(imgCounter);
-    }
 
     function displayItem(s) {
         let x = document.querySelectorAll(`${s}`);
