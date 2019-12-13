@@ -15,11 +15,31 @@
 
     </nav>
 
-    <section id="first_section_art" class="section_art">
-        <img class="art_img" src="" alt="">
-        <h2 class="art_h2"></h2>
-        <p class="art_p"></p>
+    <section id="art_single_section" class="section_art">
+        <img class="art_single_img" src="" alt="">
+        <div class="col_container">
+            <div class="col_big">
+                <h2 class="art_single_h2"></h2>
+                <p class="art_single_p"></p>
+            </div>
+            <div class="col">
+                <h6 class="art_single_type"></h6>
+                <h6 class="art_single_meassure"></h6>
+                <h6 class="art_single_availability"></h6>
+            </div>
+
+        </div>
     </section>
+
+    <template class="art_single_template">
+        <article class="art_single_list_item">
+            <div class="art_single_item_container">
+                <div class="art_single_item_img_container"></div>
+            </div>
+        </article>
+    </template>
+
+    <section class="art_list" id="art_bronze_list"></section>
 
     <footer>
 
@@ -37,19 +57,16 @@
     const id = urlParams.get("id");
     const type = urlParams.get("type");
 
-    let content = [];
+    let background = [];
     let contentArray = [];
     let imgCounter = 0;
-    let bronze = [];
-    let paintings = [];
-    let marbles = [];
+    let content = [];
+
 
     function start() {
         console.log("type: " + type);
         console.log("id: " + id);
-        if (type == "bronze") {
-            getBronze();
-        }
+
         getJson();
         /*setDots();
         setBlueDot(imgCounter);
@@ -59,31 +76,49 @@
 
     async function getJson() {
         //getMenu();
-        const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/kunst";
+        const url = `http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/baggrundKunst`;
         let myJson = await fetch(url);
-        content = await myJson.json();
-        visIndhold();
+        background = await myJson.json();
+
+        if (type == "bronze") {
+            getBronze();
+        }
+
+        if (type == "marble") {
+            getMarbles();
+        }
+
+        if (type == "painting") {
+            getPaintings();
+        }
+
     }
 
     async function getMarbles() {
         //getMenu();
-        const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/skulptur";
+        const url = `http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/skulptur/${id}`;
         let myJson = await fetch(url);
-        marbles = await myJson.json();
+        content = await myJson.json();
+
+        visIndhold();
     }
 
     async function getPaintings() {
         //getMenu();
-        const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/maleri";
+        const url = `http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/maleri/${id}`;
         let myJson = await fetch(url);
-        paintings = await myJson.json();
+        content = await myJson.json();
+
+        visIndhold();
     }
 
     async function getBronze() {
         //getMenu();
-        const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/bronzeskulptur";
+        const url = `http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/bronzeskulptur/${id}`;
         let myJson = await fetch(url);
-        bronze = await myJson.json();
+        content = await myJson.json();
+
+        visIndhold();
     }
 
     async function getMenu() {
@@ -111,13 +146,41 @@
     }
 
     function visIndhold() {
-        //De forskellige sektioner på kunstsiden tages på en gang med et loop
-        document.querySelectorAll(".section_art").forEach((sektion, i) => {
-            sektion.querySelector("img").src = content[0]["sektion_billede" + (i + 1)].guid;
-            sektion.querySelector("h2").textContent = content[0]["sektion_overskrift" + (i + 1)];
-            sektion.querySelector("p").textContent = content[0]["sektion_tekst" + (i + 1)];
+        if (type == "bronze") {
+            document.querySelector("#art_single_section").style.backgroundImage = `url(${background[0]["bronze"].guid})`;
 
-        })
+        }
+
+        if (type == "marble") {
+            document.querySelector("#art_single_section").style.backgroundImage = `url(${background[0]["marmor"].guid})`;
+
+        }
+
+        if (type == "painting") {
+            document.querySelector("#art_single_section").style.backgroundImage = `url(${background[0]["maling"].guid})`;
+
+        }
+
+        console.log(content);
+        document.querySelector(".art_single_img").src = content.stort_billede.guid;
+        document.querySelector(".art_single_h2").textContent = content.navn;
+        if (content.beskrivelse != "") {
+            document.querySelector(".art_single_p").textContent = content.beskrivelse;
+        }
+
+        document.querySelector(".art_single_type").textContent = content.type;
+        document.querySelector(".art_single_meassure").textContent = content.maal;
+        if (content.tilsalg == "Ja") {
+            document.querySelector(".art_single_availability").textContent = "Tilgængeligt værk";
+        }
+        if (content.tilsalg == "Nej") {
+            document.querySelector(".art_single_availability").textContent = "Værket er ikke tilgængeligt";
+        }
+
+        if (content.tilsalg == "Ja og vi sender det gerne med posten") {
+            document.querySelector(".art_single_availability").textContent = "Tilgængeligt værk";
+        }
+
 
     }
 

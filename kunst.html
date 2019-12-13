@@ -52,7 +52,9 @@
     <footer>
 
     </footer>
-</body></html>
+</body>
+
+</html>
 
 <script>
     document.addEventListener("DOMContentLoaded", start);
@@ -155,7 +157,7 @@
                     document.querySelector("#art_marbles_list").appendChild(clone);
 
                     document.querySelector("#art_marbles_list").lastElementChild.addEventListener("click", () => {
-                        location.href = `detalje.html?id=${marble.id}`;
+                        location.href = `detalje.html?id=${marble.id}&type=marble`;
                     });
                 })
             }
@@ -168,12 +170,12 @@
                     document.querySelector("#art_paintings_list").appendChild(clone);
 
                     document.querySelector("#art_paintings_list").lastElementChild.addEventListener("click", () => {
-                        location.href = `detalje.html?id=${painting.id}`;
+                        location.href = `detalje.html?id=${painting.id}&type=painting`;
                     });
                 })
             }
 
-                        if (i == 2) {
+            if (i == 2) {
                 bronze.forEach((bronzeSculpture, i) => {
                     const clone = document.querySelector(".art_template").cloneNode(true).content;
                     clone.querySelector(".art_item_img_container").style.backgroundImage = `url(${bronzeSculpture.stort_billede.guid})`;

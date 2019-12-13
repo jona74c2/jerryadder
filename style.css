@@ -330,6 +330,36 @@ body {
     color: var(--main-bg-color);
 }
 
+/* Detail visning her kaldet art_single */
+
+#art_single_section {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70vw;
+    color: var(--main-bg-color);
+}
+
+.art_single_img {
+    margin: 2% 15% 0%;
+    width: 70%;
+}
+
+#art_single_section .col_container {
+    margin: 2% 15%;
+    width: 70%;
+}
+
+#art_single_section h6 {
+    margin: 0;
+    text-align: center;
+    font-size: 18px;
+}
+
+#art_single_section h2 {
+    font-size: 32px;
+    margin: 0;
+}
 
 /* Media queries */
 
@@ -362,6 +392,12 @@ body {
 
     .art_item_img_container {
         height: 250px;
+    }
+
+    /* Detail visning */
+
+    #art_single_section {
+        height: 80vw;
     }
 }
 
@@ -437,6 +473,49 @@ body {
     .art_item_img_container {
         height: 200px;
     }
+
+    /* Detail visning */
+
+    #art_single_section {
+        height: 90vw;
+    }
+
+    #art_single_section h6 {
+        margin: 0;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    #art_single_section h2 {
+        font-size: 24px;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    #art_single_section p {
+        font-size: 16px;
+        margin: 0;
+    }
+}
+
+/* Mellemvisning hvor detail visning går over til en kolonne */
+@media screen and (max-width: 868px) {
+    #art_single_section {
+        height: 100vw;
+    }
+
+    #art_single_section h6 {
+        margin: 8px 0;
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .art_single_img,
+    #art_single_section .col_container {
+        margin: 5% 5% 2%;
+        width: 90%;
+    }
+
 }
 
 /* Tablet responsivitet */
@@ -506,6 +585,12 @@ body {
         height: 200px;
 
     }
+
+    /* detail visning */
+
+    #art_single_section {
+        height: 115vw;
+    }
 }
 
 /* Mobil responsivitet */
@@ -529,6 +614,11 @@ body {
         margin-bottom: 90px;
     }
 
+    /* detail visning */
+
+    #art_single_section {
+        height: 135vw;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -543,6 +633,14 @@ body {
     .art_item_img_container {
         height: 200px;
     }
+
+    /* detail visning */
+
+    #art_single_section {
+        height: 155vw;
+    }
+
+
 
 }
 
