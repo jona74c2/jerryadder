@@ -1,0 +1,22 @@
+// Forside
+
+Forside fixed img skal være længere på mobil
+
+Forside skal have et billede mellem to sektioner
+
+Forskellige images i slideren
+
+
+// Kunst
+
+Tekstbaggrunde skal fixes
+
+Indsæt hover på elementerne
+
+
+
+// Detail
+
+Der skal styles på formularen
+
+Fix formularen

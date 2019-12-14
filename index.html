@@ -114,8 +114,10 @@
     let content = [];
     let contentArray = [];
     let imgCounter = 0;
+    let bool = true;
 
     function start() {
+        getMenu();
         getJson();
         /*setDots();
         setBlueDot(imgCounter);
@@ -124,7 +126,7 @@
     }
 
     async function getJson() {
-        //getMenu();
+
         const url = "http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/forside";
         let myJson = await fetch(url);
         content = await myJson.json();
@@ -133,7 +135,7 @@
     }
 
     async function getMenu() {
-        const thisNav = await fetch("mainnavigation.html");
+        const thisNav = await fetch("nav.html");
         let fetchedNav = await thisNav.text();
         document.querySelector(".main_menu").innerHTML = fetchedNav;
         document.querySelector(".burger_icon").addEventListener("click", function() {
@@ -142,13 +144,58 @@
 
         document.querySelector("#list_item_bikes").addEventListener("click", function() {
             displayListItems("#dropdown-content1");
-        });
-        document.querySelector("#dropbtn2").addEventListener("click", function() {
-            displayListItems("#dropdown-content2");
+
+
+            if (bool) {
+                bool = false;
+                document.querySelectorAll(".burger_item").forEach((burgerItem, index) => {
+                    if (index == 1) {
+
+                        burgerItem.style.marginTop = "220px";
+                    }
+                    if (index == 2) {
+                        burgerItem.style.marginTop = "265px";
+                    }
+
+                })
+            } else {
+                bool = true;
+                document.querySelectorAll(".burger_item").forEach((burgerItem, index) => {
+                    if (index == 1) {
+                        burgerItem.style.marginTop = "90px";
+                    }
+                    if (index == 2) {
+                        burgerItem.style.marginTop = "135px";
+                    }
+
+                })
+            }
         });
 
+        // Der skal ændres en del på burgermenuen, når den skal ligge ovenpå videoen på forsiden, og ligge for sig selv på de andre sider
+
+        document.querySelector("ul").style.backgroundColor = "hsla(290, 60%, 100%, 0)";
+        document.querySelector("ul").style.position = "absolute";
+        document.querySelector("ul").style.zIndex = "6";
+        document.querySelector(".burger_icon_container").style.marginLeft = "calc(90vw - 140px)";
+
+        document.querySelector("#dropdown-content1").style.backgroundColor = "hsla(290, 60%, 100%, 0)";
+        document.querySelector("#dropdown-content1").style.color = "white";
+
+        document.querySelectorAll(".burger_item").forEach((burgerItem, index) => {
+            burgerItem.style.position = "absolute";
+            burgerItem.style.zIndex = "4";
+            burgerItem.style.left = "100%";
+            burgerItem.style.width = "170px";
+            let margin = (index + 1) * 45 + "px";
+            console.log("margin: " + margin);
+            burgerItem.style.marginTop = margin;
+            burgerItem.style.backgroundColor = "hsla(0, 0%, 0%, 0.8)";
+
+        })
 
     }
+
 
     async function getFooter() {
         const thisFooter = await fetch("footer.html");
@@ -210,21 +257,13 @@
         setBlueDot(imgCounter);
     }
 
-    function displayItem(s) {
-        let x = document.querySelectorAll(`${s}`);
-        if (x.style.display === "block") {
-            x.style.display = "none";
-        } else {
-            x.style.display = "block";
-        }
-    }
-
     function displayListItems(s) {
         document.querySelectorAll(`${s}`).forEach((x, i) => {
             if (x.style.display === "block") {
                 x.style.display = "none";
             } else {
                 x.style.display = "block";
+
             }
         })
 

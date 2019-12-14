@@ -17,36 +17,52 @@
 
     <section id="art_single_section" class="section_art">
         <img class="art_single_img" src="" alt="">
+        <h2 class="art_single_h2"></h2>
         <div class="col_container">
+
             <div class="col_big">
-                <h2 class="art_single_h2"></h2>
+
                 <p class="art_single_p"></p>
             </div>
             <div class="col">
-                <h6 class="art_single_type"></h6>
                 <h6 class="art_single_meassure"></h6>
+                <h6 class="art_single_type"></h6>
                 <h6 class="art_single_availability"></h6>
             </div>
 
         </div>
     </section>
 
+    <!-- Mailformular eksempel taget fra undervisningsslide:
+ https://kea-fronter.itslearning.com/LearningToolElement/ViewLearningToolElement.aspx?LearningToolElementId=686366 -->
+
+
     <template class="art_single_template">
-        <article class="art_single_list_item">
-            <div class="art_single_item_container">
-                <div class="art_single_item_img_container"></div>
-            </div>
+        <article>
+            <img class="art_single_list_item" src="" alt="">
         </article>
     </template>
 
-    <section class="art_list" id="art_bronze_list"></section>
+    <section id="art_single_list_section">
+        <p id="price"></p>
+        <p>Bestil en vinprop her<br>Mailen sendes til Jerry Adders agent John Wulff, der tager sig af bestillingerne</p>
+        <form action="mail.php" method="POST">
+
+            <p>Navn</p>
+            <input type="text" name="name">
+            <p>Din email</p>
+            <input type="text" name="email">
+            <p>Besked</p>
+            <textarea name="message" rows="6" cols="25"></textarea>
+            <br>
+            <input type="submit" value="Send">
+        </form>
+    </section>
 
     <footer>
 
     </footer>
-</body>
-
-</html>
+</body></html>
 
 <script>
     document.addEventListener("DOMContentLoaded", start);
@@ -75,7 +91,7 @@
     }
 
     async function getJson() {
-        //getMenu();
+        getMenu();
         const url = `http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/baggrundKunst`;
         let myJson = await fetch(url);
         background = await myJson.json();
@@ -95,7 +111,6 @@
     }
 
     async function getMarbles() {
-        //getMenu();
         const url = `http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/skulptur/${id}`;
         let myJson = await fetch(url);
         content = await myJson.json();
@@ -104,7 +119,6 @@
     }
 
     async function getPaintings() {
-        //getMenu();
         const url = `http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/maleri/${id}`;
         let myJson = await fetch(url);
         content = await myJson.json();
@@ -113,7 +127,6 @@
     }
 
     async function getBronze() {
-        //getMenu();
         const url = `http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/bronzeskulptur/${id}`;
         let myJson = await fetch(url);
         content = await myJson.json();
@@ -122,7 +135,7 @@
     }
 
     async function getMenu() {
-        const thisNav = await fetch("mainnavigation.html");
+        const thisNav = await fetch("nav.html");
         let fetchedNav = await thisNav.text();
         document.querySelector(".main_menu").innerHTML = fetchedNav;
         document.querySelector(".burger_icon").addEventListener("click", function() {
@@ -132,10 +145,6 @@
         document.querySelector("#list_item_bikes").addEventListener("click", function() {
             displayListItems("#dropdown-content1");
         });
-        document.querySelector("#dropbtn2").addEventListener("click", function() {
-            displayListItems("#dropdown-content2");
-        });
-
 
     }
 
@@ -168,18 +177,44 @@
             document.querySelector(".art_single_p").textContent = content.beskrivelse;
         }
 
-        document.querySelector(".art_single_type").textContent = content.type;
-        document.querySelector(".art_single_meassure").textContent = content.maal;
-        if (content.tilsalg == "Ja") {
-            document.querySelector(".art_single_availability").textContent = "Tilgængeligt værk";
-        }
-        if (content.tilsalg == "Nej") {
-            document.querySelector(".art_single_availability").textContent = "Værket er ikke tilgængeligt";
+
+        if (type == "bronze") {
+            document.querySelector(".art_single_type").textContent = "Bronzeskulptur";
+
+        } else {
+            document.querySelector(".art_single_type").textContent = content.slags;
+
         }
 
-        if (content.tilsalg == "Ja og vi sender det gerne med posten") {
+        document.querySelector(".art_single_meassure").textContent = `${content.maal} cm`;
+        if (content.tilsalg == "Ja") {
             document.querySelector(".art_single_availability").textContent = "Tilgængeligt værk";
+        } else if (content.tilsalg == "Nej") {
+            document.querySelector(".art_single_availability").textContent = "Værket er ikke tilgængeligt";
+        } else if (content.tilsalg == "Ja og vi sender det gerne med posten") {
+            document.querySelector(".art_single_availability").textContent = "Tilgængeligt værk";
+            document.querySelector("#price").textContent = content.pris;
+
         }
+
+        //alle billeder af kunstværket sættes ind i dette while loop
+        //Først tjekkes om det næste billede findes og herefter om der er en guid
+        //Så længe der er billeder, så kører koden, og sætter billedernes source
+        //Der oprettes en klon af et div element til at indlæse en varienrende mængde af billeder
+        let i = 0;
+        while (content["billede" + (i + 1)] != null) {
+            if (content["billede" + (i + 1)].guid) {
+                console.log(content["billede" + (i + 1)].guid);
+                const clone = document.querySelector(".art_single_template").cloneNode(true).content;
+                clone.querySelector("img").src = content["billede" + (i + 1)].guid;
+                document.querySelector("#art_single_list_section").appendChild(clone);
+
+            }
+            i++;
+        }
+
+        document.querySelector("#art_single_list_section").style.backgroundImage = `url(${background[0].galleri_baggrund.guid})`;
+
 
 
     }

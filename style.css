@@ -80,6 +80,81 @@ body {
     margin: 0 15%;
 }
 
+/* Navigation */
+
+/* Top menu */
+
+ul {
+    padding: 0;
+    margin: 0;
+    margin-bottom: -6px;
+
+    display: flex;
+    background-color: var(--secondary-bg-color);
+}
+
+li {
+    display: inline-block;
+    margin-top: 32px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+
+}
+
+li img {
+    margin-top: -32px;
+    margin-bottom: -16px;
+    width: 170px;
+}
+
+.burger_icon {
+    display: none;
+}
+
+/* Dropdown menu eksempel er taget herfra: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover og tilpasset med ændringer */
+
+.menu_item {
+    text-decoration: none;
+    padding: 15px;
+    color: var(--main-bg-color);
+}
+
+.menu_item:hover {
+    color: var(--main-bg-color);
+    background-color: var(--split-red-color);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--main-bg-color);
+    min-width: 140px;
+    margin-top: 9px;
+    box-shadow: none;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: var(--main-text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--split-red-color);
+    color: var(--main-bg-color);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 
 /* Forsiden */
 
@@ -338,6 +413,8 @@ body {
     background-size: cover;
     height: 70vw;
     color: var(--main-bg-color);
+    position: relative;
+    z-index: 2;
 }
 
 .art_single_img {
@@ -351,14 +428,52 @@ body {
 }
 
 #art_single_section h6 {
-    margin: 0;
+    padding: 3px 0;
     text-align: center;
     font-size: 18px;
+    margin: 0;
 }
 
 #art_single_section h2 {
     font-size: 32px;
-    margin: 0;
+    padding: 2% 15% 0%;
+}
+
+/* for at få billederne til at ligne masonry (murværk) anvendes columns. I modsætning til grid, så sætter columns ikke højden af rækken til det største element, men de kommer bare efter hinanden uafhængigt af andre højder. */
+/* spørg hvordan de tre columns tildeles forskellige margin-top */
+#art_single_list_section {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*display: grid;
+    grid-gap: 2%;
+    grid-template-columns: repeat(3, 1fr);
+    */
+
+    columns: 3;
+    column-gap: 2%;
+
+
+    padding-top: calc(2% + 170px);
+    padding-left: 15%;
+    padding-right: 15%;
+
+    margin-top: -150px;
+    padding-bottom: 50px;
+
+}
+
+.art_single_list_item {
+    margin-bottom: 5%;
+}
+
+input {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
 }
 
 /* Media queries */
@@ -489,7 +604,7 @@ body {
     #art_single_section h2 {
         font-size: 24px;
         margin: 0;
-        margin-bottom: 20px;
+        padding: 0 15% 0;
     }
 
     #art_single_section p {
@@ -499,13 +614,12 @@ body {
 }
 
 /* Mellemvisning hvor detail visning går over til en kolonne */
-@media screen and (max-width: 868px) {
+@media screen and (max-width: 958px) {
     #art_single_section {
         height: 100vw;
     }
 
     #art_single_section h6 {
-        margin: 8px 0;
         text-align: left;
         font-size: 14px;
     }
@@ -514,6 +628,95 @@ body {
     #art_single_section .col_container {
         margin: 5% 5% 2%;
         width: 90%;
+    }
+
+    #art_single_section h2 {
+        padding: 0% 5% 0%;
+    }
+
+    #art_single_list_section {
+
+        padding-left: 5%;
+        padding-right: 5%;
+        columns: 1;
+        column-gap: 0%;
+        padding-bottom: 100px;
+    }
+
+    .burger_item {
+        display: none;
+    }
+
+    ul {
+        flex-direction: column;
+    }
+
+    li {
+        padding: 10px;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    li img {
+        margin-top: -10px;
+        width: 120px;
+    }
+
+    .burger_icon {
+        display: inline-block;
+        position: absolute;
+        left: 89%;
+    }
+
+    .burger_icon img {
+        margin-top: 15px;
+        margin-bottom: 0;
+        width: 24px;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: none;
+    }
+
+    .dropdown {
+        width: 140px;
+    }
+
+    .dropdown-content {
+        display: none;
+    }
+
+    #dropbtn1 {
+        pointer-events: none;
+        cursor: default;
+    }
+
+    .burger_item {
+        margin: 0;
+        margin-bottom: 16px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: relative;
+        text-align: center;
+        background-color: var(--main-bg-color);
+        width: 70%;
+        margin-top: 9px;
+        margin-left: 0px;
+        margin-right: 0px;
+        box-shadow: none;
+    }
+
+    .dropdown-content a {
+        border-bottom: 1px solid var(--tertiary-bg-color);
+        font-size: 12px;
+    }
+
+    #menu_item_contact {
+        margin-bottom: 25px;
     }
 
 }
@@ -638,6 +841,10 @@ body {
 
     #art_single_section {
         height: 155vw;
+    }
+
+    #art_single_list_section {
+        padding-bottom: 20px;
     }
 
 

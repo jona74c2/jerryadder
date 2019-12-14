@@ -52,9 +52,7 @@
     <footer>
 
     </footer>
-</body>
-
-</html>
+</body></html>
 
 <script>
     document.addEventListener("DOMContentLoaded", start);
@@ -62,7 +60,7 @@
     //document.querySelector("left_container").addEventListener("click", openNScroll);
 
     const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get("id");
+    const type = urlParams.get("type");
 
     let content = [];
     let contentArray = [];
@@ -72,6 +70,7 @@
     let marbles = [];
 
     function start() {
+        getMenu();
         getJson();
         /*setDots();
         setBlueDot(imgCounter);
@@ -116,7 +115,7 @@
     }
 
     async function getMenu() {
-        const thisNav = await fetch("mainnavigation.html");
+        const thisNav = await fetch("nav.html");
         let fetchedNav = await thisNav.text();
         document.querySelector(".main_menu").innerHTML = fetchedNav;
         document.querySelector(".burger_icon").addEventListener("click", function() {
@@ -126,10 +125,6 @@
         document.querySelector("#list_item_bikes").addEventListener("click", function() {
             displayListItems("#dropdown-content1");
         });
-        document.querySelector("#dropbtn2").addEventListener("click", function() {
-            displayListItems("#dropdown-content2");
-        });
-
 
     }
 
@@ -188,10 +183,24 @@
                 })
             }
         })
+        //denne timeout bruges til at vente på at indholdet er hentet ind og sat op på siden, før der scrolles ned til en sektion
+        //Er der ikke en timeout, så er det tilfældigt hvortil der autoscrolles
+        setTimeout(scrollIntoView, 150);
 
     }
 
+    function scrollIntoView(){
+                let elements = document.querySelectorAll(".art_img");
+        if (type == "painting") {
+            elements[1].scrollIntoView({alignToTop: true, behavior: "smooth", block: "start", inline: "start"});
+        }
 
+                if (type == "bronze") {
+                    console.log("Type: "+type);
+
+            elements[2].scrollIntoView({alignToTop: true, behavior: "smooth", block: "start", inline: "start"});
+        }
+    }
 
     function displayItem(s) {
         let x = document.querySelectorAll(`${s}`);
