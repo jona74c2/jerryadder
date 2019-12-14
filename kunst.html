@@ -52,7 +52,9 @@
     <footer>
 
     </footer>
-</body></html>
+</body>
+
+</html>
 
 <script>
     document.addEventListener("DOMContentLoaded", start);
@@ -186,19 +188,30 @@
         //denne timeout bruges til at vente på at indholdet er hentet ind og sat op på siden, før der scrolles ned til en sektion
         //Er der ikke en timeout, så er det tilfældigt hvortil der autoscrolles
         setTimeout(scrollIntoView, 150);
+        getFooter();
 
     }
 
-    function scrollIntoView(){
-                let elements = document.querySelectorAll(".art_img");
+    function scrollIntoView() {
+        let elements = document.querySelectorAll(".art_img");
         if (type == "painting") {
-            elements[1].scrollIntoView({alignToTop: true, behavior: "smooth", block: "start", inline: "start"});
+            elements[1].scrollIntoView({
+                alignToTop: true,
+                behavior: "smooth",
+                block: "start",
+                inline: "start"
+            });
         }
 
-                if (type == "bronze") {
-                    console.log("Type: "+type);
+        if (type == "bronze") {
+            console.log("Type: " + type);
 
-            elements[2].scrollIntoView({alignToTop: true, behavior: "smooth", block: "start", inline: "start"});
+            elements[2].scrollIntoView({
+                alignToTop: true,
+                behavior: "smooth",
+                block: "start",
+                inline: "start"
+            });
         }
     }
 

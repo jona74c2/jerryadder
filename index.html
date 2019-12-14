@@ -54,7 +54,7 @@
         </div>
     </section>
 
-
+    <img id="frontpage_between_sections_img" src="" alt="">
 
     <section id="third_section_frontpage" class="section_frontpage">
         <div class="col_container">
@@ -115,6 +115,7 @@
     let contentArray = [];
     let imgCounter = 0;
     let bool = true;
+    let mobile = false;
 
     function start() {
         getMenu();
@@ -123,6 +124,9 @@
         setBlueDot(imgCounter);
         getFooter();
         */
+        if (window.innerWidth <= 958) {
+            mobile = true;
+        }
     }
 
     async function getJson() {
@@ -146,7 +150,7 @@
             displayListItems("#dropdown-content1");
 
 
-            if (bool) {
+            if (bool && mobile) {
                 bool = false;
                 document.querySelectorAll(".burger_item").forEach((burgerItem, index) => {
                     if (index == 1) {
@@ -158,7 +162,7 @@
                     }
 
                 })
-            } else {
+            } else if (!bool && mobile) {
                 bool = true;
                 document.querySelectorAll(".burger_item").forEach((burgerItem, index) => {
                     if (index == 1) {
@@ -178,22 +182,26 @@
         document.querySelector("ul").style.position = "absolute";
         document.querySelector("ul").style.zIndex = "6";
         document.querySelector(".burger_icon_container").style.marginLeft = "calc(90vw - 140px)";
+        if (mobile) {
 
-        document.querySelector("#dropdown-content1").style.backgroundColor = "hsla(290, 60%, 100%, 0)";
-        document.querySelector("#dropdown-content1").style.color = "white";
 
-        document.querySelectorAll(".burger_item").forEach((burgerItem, index) => {
-            burgerItem.style.position = "absolute";
-            burgerItem.style.zIndex = "4";
-            burgerItem.style.left = "100%";
-            burgerItem.style.width = "170px";
-            let margin = (index + 1) * 45 + "px";
-            console.log("margin: " + margin);
-            burgerItem.style.marginTop = margin;
-            burgerItem.style.backgroundColor = "hsla(0, 0%, 0%, 0.8)";
+            document.querySelector("#dropdown-content1").style.backgroundColor = "hsla(290, 60%, 100%, 0)";
+            document.querySelector("#dropdown-content1").style.color = "white";
 
-        })
+            document.querySelectorAll(".burger_item").forEach((burgerItem, index) => {
+                burgerItem.style.position = "absolute";
+                burgerItem.style.zIndex = "4";
+                burgerItem.style.left = "50vw";
+                burgerItem.style.transform = "translateX(-50%)";
+                burgerItem.style.width = "170px";
+                let margin = (index + 1) * 45 + "px";
+                console.log("margin: " + margin);
+                burgerItem.style.marginTop = margin;
+                burgerItem.style.backgroundColor = "hsla(0, 0%, 0%, 0.8)";
 
+            })
+
+        }
     }
 
 
@@ -221,7 +229,13 @@
 
         //Det statiske billede tildeles en src
         document.querySelector("#static_image").src = content[0].statisk_billede.guid;
+        getFooter();
 
+        //det statiske billede har en sort baggrund, så baggrundsfarven sort indsættes på index.html body, fordi billedet ikke kan dække hele skærmens længde på mobile
+        document.querySelector("body").style.backgroundColor = "black";
+
+        //Billedet mellem sektioner tildeles en src
+        document.querySelector("#frontpage_between_sections_img").src = content[0].mellemsektions_billede.guid;
     }
 
     function setBlueDot(blue) {

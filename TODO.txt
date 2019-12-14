@@ -1,9 +1,5 @@
 // Forside
 
-Forside fixed img skal være længere på mobil
-
-Forside skal have et billede mellem to sektioner
-
 Forskellige images i slideren
 
 
@@ -20,3 +16,8 @@ Indsæt hover på elementerne
 Der skal styles på formularen
 
 Fix formularen
+
+
+// Evt
+
+Lav navigation ensformigt på mobil
