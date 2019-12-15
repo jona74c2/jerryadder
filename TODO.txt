@@ -3,11 +3,10 @@
 Links til de forskellige images i slideren
 
 
+
 // Kunst
-
+/* Spørg hvorfor baggrunde på forsiden rykker sig */
 Tekstbaggrunde skal fixes
-
-Indsæt hover på elementerne
 
 
 

@@ -413,11 +413,26 @@ li img {
 
 .section_art {
     color: var(--main-bg-color);
-    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100px;
+    height: 15vw;
 
+}
+
+.art_item_img_container:hover {
+    animation: zoomIn 0.25s ease-in-out;
+    cursor: pointer;
+    background-size: 105%;
+}
+
+@keyframes zoomIn {
+    from {
+        background-size: 100%;
+    }
+
+    to {
+        background-size: 105%;
+    }
 }
 
 .art_h2,
@@ -426,7 +441,7 @@ li img {
 }
 
 .art_h2 {
-    margin-top: -7%;
+    margin-top: 3%;
     font-size: 48px;
 }
 
@@ -437,12 +452,12 @@ li img {
 }
 
 #first_section_art {
-    padding-top: 10%;
+    margin-top: 0%;
 }
 
 #second_section_art {
     text-align: right;
-    padding-top: 10%;
+    padding-top: 0%;
     margin-top: 10%;
 }
 
@@ -452,7 +467,7 @@ li img {
 }
 
 #third_section_art {
-    padding-top: 10%;
+    padding-top: 0%;
     margin-top: 10%;
 }
 
@@ -467,6 +482,10 @@ li img {
     grid-template-columns: repeat(3, 1fr);
     margin-bottom: -7%;
 
+}
+
+#art_bronze_list {
+    margin-bottom: 50px;
 }
 
 .art_item_img_container {
