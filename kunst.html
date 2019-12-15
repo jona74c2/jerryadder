@@ -140,7 +140,7 @@
         //De forskellige sektioner på kunstsiden tages på en gang med et loop
         document.querySelectorAll(".section_art").forEach((sektion, i) => {
             console.log("i: " + i);
-            sektion.querySelector("img").src = content[0]["sektion_billede" + (i + 1)].guid;
+            sektion.style.backgroundImage = `url(${content[0]["sektion_billede" + (i + 1)].guid})`;
             sektion.querySelector("h2").textContent = content[0]["sektion_overskrift" + (i + 1)];
             sektion.querySelector("p").textContent = content[0]["sektion_tekst" + (i + 1)];
             console.log("i: " + i);

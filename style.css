@@ -76,6 +76,10 @@ body {
     margin: 0 30px;
 }
 
+.hide {
+    display: none;
+}
+
 .margin_15 {
     margin: 0 15%;
 }
@@ -230,6 +234,56 @@ li img {
     */
 }
 
+#swipeimages_container {
+    width: calc(100% - 60px);
+    margin-right: 60px;
+    height: 35vw;
+    overflow: hidden;
+    box-shadow: 1px 3px 10px 2px rgba(0, 0, 0, 0.36);
+}
+
+.swipeimg_container {
+    width: 100%;
+    height: 40vw;
+    background-position: center;
+    background-size: cover;
+}
+
+#svipeimg_container5 {
+    background-position: top;
+}
+
+.swipe_img {
+    padding: 0;
+    margin: 0;
+}
+
+#dot_container {
+    display: flex;
+    justify-content: center;
+}
+
+#dot_section {
+    display: flex;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--main-bg-color);
+    margin: 5px;
+
+}
+
+
+#first_section_frontpage #dot_container .dot:hover {
+    background-color: var(--split-turquoise-color) !important;
+    cursor: pointer;
+
+}
+
 #first_section_frontpage button {
     border: 2px solid var(--main-bg-color);
     color: var(--main-bg-color);
@@ -359,6 +413,10 @@ li img {
 
 .section_art {
     color: var(--main-bg-color);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100px;
 
 }
 
@@ -368,7 +426,7 @@ li img {
 }
 
 .art_h2 {
-    margin-top: -10%;
+    margin-top: -7%;
     font-size: 48px;
 }
 
@@ -378,11 +436,14 @@ li img {
     margin-right: 55%;
 }
 
-#first_section_art {}
+#first_section_art {
+    padding-top: 10%;
+}
 
 #second_section_art {
     text-align: right;
     padding-top: 10%;
+    margin-top: 10%;
 }
 
 #second_section_art .art_p {
@@ -392,6 +453,7 @@ li img {
 
 #third_section_art {
     padding-top: 10%;
+    margin-top: 10%;
 }
 
 /* Kunsten på kunstsiden */
@@ -608,27 +670,15 @@ textarea {
     /* kunstsiden */
 
     #first_section_art .art_h2 {
-        margin-top: -130px;
-    }
-
-    #second_section_art .art_h2 {
-        margin-top: -120px;
-    }
-
-    #third_section_art .art_h2 {
-        margin-top: -100px;
+        margin-top: -50px;
     }
 
     .art_h2 {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     .art_p {
-        font-size: 18px;
-    }
-
-    .art_img {
-        height: 150px;
+        font-size: 15px;
     }
 
     .art_p {
@@ -642,11 +692,7 @@ textarea {
     }
 
     #second_section_art .art_p {
-        margin-left: 40%;
-    }
-
-    .art_item_img_container {
-        height: 200px;
+        margin-left: 30%;
     }
 
     /* Detail visning */
@@ -861,13 +907,20 @@ textarea {
     }
 
     /* kunst side */
+
+    #first_section_art .art_p {
+        margin-right: 30%;
+    }
+
     #second_section_art .art_p {
-        margin-left: 50%;
+        margin-left: 30%;
     }
 
     .art_list {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
     .art_item_img_container {

@@ -1,6 +1,6 @@
 // Forside
 
-Forskellige images i slideren
+Links til de forskellige images i slideren
 
 
 // Kunst
@@ -18,6 +18,15 @@ Der skal styles på formularen
 Fix formularen
 
 
+
+// For alle sider
+
+Sæt pagetitles
+
+
+
 // Evt
 
 Lav navigation ensformigt på mobil
+
+Ændre skulpturer til marmorskulpturer i pods

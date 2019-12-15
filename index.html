@@ -28,10 +28,37 @@
     </section>
 
 
+
+
     <section id="first_section_frontpage" class="section_frontpage">
         <div class="col_container">
             <div class="col_big">
-                <img class="frontpage_img" src="" alt="">
+
+
+                <div id="swipeimages_container">
+                    <div class="swipeimg_container">
+                    </div>
+
+                    <div class="swipeimg_container hide">
+                    </div>
+
+                    <div class="swipeimg_container hide">
+                    </div>
+
+                    <div class="swipeimg_container hide">
+                    </div>
+
+                    <div class="swipeimg_container hide" id="svipeimg_container5">
+                    </div>
+
+                </div>
+                <div id="dot_container">
+                    <div class="dot" id="dot1"></div>
+                    <div class="dot" id="dot2"></div>
+                    <div class="dot" id="dot3"></div>
+                    <div class="dot" id="dot4"></div>
+                    <div class="dot" id="dot5"></div>
+                </div>
             </div>
             <div class="col">
                 <h2 class="frontpage_h2"></h2>
@@ -84,24 +111,12 @@
         </div>
     </section>
 
-    <!--
-        <div id="dot_container">
-            <img class="dot" id="dot1" src="img/dot.svg" alt="">
-            <img class="dot" id="dot2" src="img/dot.svg" alt="">
-            <img class="dot" id="dot3" src="img/dot.svg" alt="">
-            <img class="dot" id="dot4" src="img/dot.svg" alt="">
-            <img class="dot" id="dot5" src="img/dot.svg" alt="">
-        </div>
--->
-
 
 
     <footer>
 
     </footer>
-</body>
-
-</html>
+</body></html>
 
 <script>
     document.addEventListener("DOMContentLoaded", start);
@@ -120,10 +135,9 @@
     function start() {
         getMenu();
         getJson();
-        /*setDots();
+        setDots();
         setBlueDot(imgCounter);
-        getFooter();
-        */
+
         if (window.innerWidth <= 958) {
             mobile = true;
         }
@@ -221,10 +235,18 @@
         //De forskellige sektioner på forsiden tages på en gang med et loop
         document.querySelectorAll(".section_frontpage").forEach((sektion, i) => {
             sektion.style.backgroundImage = `url(${content[0]["baggrundsbillede" + (i + 1)].guid})`;
-            sektion.querySelector("img").src = content[0]["billede" + (i + 1)].guid;
+            if(i>0){
+                sektion.querySelector("img").src = content[0]["billede" + (i + 1)].guid;
+            }
+
             sektion.querySelector("h2").textContent = content[0]["overskrift" + (i + 1)];
             sektion.querySelector("p").textContent = content[0]["tekst" + (i + 1)];
             sektion.querySelector("button").textContent = content[0]["knap" + (i + 1)];
+        })
+
+        document.querySelectorAll(".swipeimg_container").forEach((img, i) => {
+                img.style.backgroundImage = `url(${content[0]["slider_billede" + (i + 1)].guid})`;
+                //img.alt = content[0]["slider_billede" + (i + 1)].post_title;
         })
 
         //Det statiske billede tildeles en src
@@ -240,9 +262,9 @@
 
     function setBlueDot(blue) {
         document.querySelectorAll(".dot").forEach((dot, i) => {
-            dot.src = "img/dot.svg";
+            dot.style.backgroundColor = "white";
             if (blue == i) {
-                dot.src = "img/bluedot.svg";
+                dot.style.backgroundColor = "#11505D";
             }
         })
     }
