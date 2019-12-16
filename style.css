@@ -99,16 +99,17 @@ ul {
 
 li {
     display: inline-block;
-    margin-top: 32px;
+    margin-top: 56px;
     margin-right: 20px;
     margin-bottom: 16px;
+    font-size: 20px;
 
 }
 
 li img {
-    margin-top: -32px;
+    margin-top: -56px;
     margin-bottom: -16px;
-    width: 170px;
+    width: 250px;
 }
 
 .burger_icon {
@@ -684,7 +685,7 @@ textarea {
 
 
     .art_item_img_container {
-        height: 250px;
+        height: 150px;
     }
 
     /* Detail visning */
@@ -781,6 +782,7 @@ textarea {
     #art_single_section h2 {
         font-size: 24px;
         margin: 0;
+        margin-top: 20px;
         padding: 0 15% 0;
     }
 
@@ -816,6 +818,11 @@ textarea {
     #art_single_section h6 {
         text-align: left;
         font-size: 14px;
+
+    }
+
+    .art_single_meassure {
+        margin-top: 20px !important;
     }
 
     .art_single_img,

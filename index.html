@@ -116,12 +116,33 @@
     <footer>
 
     </footer>
-</body></html>
+</body>
+
+</html>
 
 <script>
     document.addEventListener("DOMContentLoaded", start);
 
     //document.querySelector("left_container").addEventListener("click", openNScroll);
+
+    document.querySelectorAll(".frontpage_button").forEach((button, i) => {
+        button.addEventListener("click", function() {
+            if (i == 0) {
+                window.open('kunst.html', '_self', false);
+            }
+            if (i == 1) {
+                //window.open('omjerryadder.html', '_self', false);
+            }
+            if (i == 2) {
+                window.open('detalje.html?id=132&type=bronze', '_self', false);
+            }
+            if (i == 3) {
+                //window.open('stenensrejse.html', '_self', false);
+            }
+
+
+        })
+    })
 
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
@@ -235,7 +256,7 @@
         //De forskellige sektioner på forsiden tages på en gang med et loop
         document.querySelectorAll(".section_frontpage").forEach((sektion, i) => {
             sektion.style.backgroundImage = `url(${content[0]["baggrundsbillede" + (i + 1)].guid})`;
-            if(i>0){
+            if (i > 0) {
                 sektion.querySelector("img").src = content[0]["billede" + (i + 1)].guid;
             }
 
@@ -245,8 +266,8 @@
         })
 
         document.querySelectorAll(".swipeimg_container").forEach((img, i) => {
-                img.style.backgroundImage = `url(${content[0]["slider_billede" + (i + 1)].guid})`;
-                //img.alt = content[0]["slider_billede" + (i + 1)].post_title;
+            img.style.backgroundImage = `url(${content[0]["slider_billede" + (i + 1)].guid})`;
+            //img.alt = content[0]["slider_billede" + (i + 1)].post_title;
         })
 
         //Det statiske billede tildeles en src

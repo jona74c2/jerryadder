@@ -163,16 +163,18 @@
     function visIndhold() {
         if (type == "bronze") {
             document.querySelector("#art_single_section").style.backgroundImage = `url(${background[0]["bronze"].guid})`;
-
+            document.querySelector("title").textContent = "Bronzeskulpturer | Jerry Adder";
         }
 
         if (type == "marble") {
             document.querySelector("#art_single_section").style.backgroundImage = `url(${background[0]["marmor"].guid})`;
+            document.querySelector("title").textContent = "Marmorskulpturer | Jerry Adder";
 
         }
 
         if (type == "painting") {
             document.querySelector("#art_single_section").style.backgroundImage = `url(${background[0]["maling"].guid})`;
+            document.querySelector("title").textContent = "Malerier | Jerry Adder";
 
         }
 
