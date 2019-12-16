@@ -6,9 +6,6 @@ Få knapperne til at linke
 
 
 // Kunst
-/* Spørg hvorfor baggrunde på forsiden rykker sig */
-Tekstbaggrunde skal fixes
-
 
 
 // Detail

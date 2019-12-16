@@ -228,15 +228,26 @@
 
         getFooter();
 
-        //Denne funktion bruges til dynamisk at sætte højden på sektionens baggrund ud fra indholdet. Som den er nu tager den udgangspunkt i billedet
+        //Denne funktion bruges til dynamisk at sætte højden på sektionens baggrund ud fra indholdet. Funktionen bruger både billedets højde og tekstens længde til at sætte højden på baggrundsbilledet
         setTimeout(backgroundImageHeight, 100);
 
     }
 
     function backgroundImageHeight() {
-        let imageHeight = document.querySelector(".art_single_img");
-        console.log("image hieght: " + imageHeight.height);
-        document.querySelector("#art_single_section").style.height = `${imageHeight.height*1.2+250}px`;
+        if (window.innerWidth < 958) {
+            let imageHeight = document.querySelector(".art_single_img");
+            console.log("image hieght: " + imageHeight.height);
+            let textLength = content.beskrivelse.length;
+            console.log("Text length: " + textLength);
+            document.querySelector("#art_single_section").style.height = `${imageHeight.height*1+220+textLength*0.45}px`;
+        } else {
+            let imageHeight = document.querySelector(".art_single_img");
+            console.log("image hieght: " + imageHeight.height);
+            //let textLength = content.beskrivelse.length;
+            //console.log("Text length: " + textLength);
+            document.querySelector("#art_single_section").style.height = `${imageHeight.height+440}px`;
+        }
+
     }
 
 
