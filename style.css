@@ -415,7 +415,7 @@ li img {
     color: var(--main-bg-color);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 15vw;
+    height: 200px;
 
 }
 
@@ -441,7 +441,6 @@ li img {
 }
 
 .art_h2 {
-    margin-top: 3%;
     font-size: 48px;
 }
 
@@ -449,6 +448,19 @@ li img {
     font-size: 22px;
     margin-top: 0.5%;
     margin-right: 55%;
+}
+
+
+#first_section_art .art_h2 {
+    margin-top: 16px;
+}
+
+#second_section_art .art_h2 {
+    margin-top: 35px;
+}
+
+#third_section_art .art_h2 {
+    margin-top: 25px;
 }
 
 #first_section_art {
@@ -459,6 +471,8 @@ li img {
     text-align: right;
     padding-top: 0%;
     margin-top: 10%;
+    background-position: 100%;
+    height: 230px;
 }
 
 #second_section_art .art_p {
@@ -474,13 +488,14 @@ li img {
 /* Kunsten på kunstsiden */
 
 .art_list {
-    margin-top: 7%;
+    margin-top: 5%;
+    margin-bottom: -5%;
     margin-left: 10%;
     margin-right: 10%;
     display: grid;
-    grid-gap: 2%;
+    grid-gap: 3%;
+    grid-row-gap: 5%;
     grid-template-columns: repeat(3, 1fr);
-    margin-bottom: -7%;
 
 }
 
@@ -661,9 +676,6 @@ textarea {
 
     /* kunstsiden */
 
-    #second_section_art .art_h2 {
-        margin-top: -13%;
-    }
 
     .art_item_img_container {
         height: 250px;
@@ -690,6 +702,7 @@ textarea {
         padding: 30px;
         background-repeat: no-repeat;
         background-size: cover;
+
     }
 
 
@@ -708,8 +721,21 @@ textarea {
 
     /* kunstsiden */
 
+    .section_art {
+        height: 150px;
+    }
+
+
     #first_section_art .art_h2 {
-        margin-top: -50px;
+        margin-top: 16px;
+    }
+
+    #second_section_art .art_h2 {
+        margin-top: 35px;
+    }
+
+    #third_section_art .art_h2 {
+        margin-top: 25px;
     }
 
     .art_h2 {
@@ -727,7 +753,7 @@ textarea {
 
     #second_section_art {
         text-align: right;
-        padding-top: 10%;
+        height: 180px;
     }
 
     #second_section_art .art_p {
@@ -967,6 +993,7 @@ textarea {
 
     }
 
+
     /* detail visning */
 
     #art_single_section {
@@ -991,8 +1018,8 @@ textarea {
 
     .art_list {
         grid-template-columns: repeat(1, 1fr);
-        grid-gap: 2%;
-        margin-top: 13%;
+        grid-gap: 5%;
+        margin-top: 20px;
     }
 
     .art_item_img_container {
@@ -1000,7 +1027,7 @@ textarea {
     }
 
     #art_paintings_list {
-        margin-bottom: 90px;
+        margin-bottom: 140px;
     }
 
     /* detail visning */
