@@ -64,9 +64,7 @@
     <footer>
 
     </footer>
-</body>
-
-</html>
+</body></html>
 
 <script>
     document.addEventListener("DOMContentLoaded", start);
@@ -117,7 +115,7 @@
     }
 
     async function getMarbles() {
-        const url = `http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/skulptur/${id}`;
+        const url = `http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/marmorskulptur/${id}`;
         let myJson = await fetch(url);
         content = await myJson.json();
 

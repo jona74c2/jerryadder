@@ -2,8 +2,6 @@
 
 Links til de forskellige images i slideren
 
-Få knapperne til at linke
-
 
 // Kunst
 
@@ -15,8 +13,6 @@ Fix formularen så mailen sendes
 
 
 // For alle sider
-
-Sæt pagetitles
 
 
 
