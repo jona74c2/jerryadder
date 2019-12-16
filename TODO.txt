@@ -2,6 +2,7 @@
 
 Links til de forskellige images i slideren
 
+Få knapperne til at linke
 
 
 // Kunst
@@ -12,9 +13,7 @@ Tekstbaggrunde skal fixes
 
 // Detail
 
-Der skal styles på formularen
-
-Fix formularen
+Fix formularen så mailen sendes
 
 
 

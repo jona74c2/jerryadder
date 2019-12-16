@@ -44,27 +44,27 @@
     </template>
 
     <section id="art_single_list_section">
-        <p id="price"></p>
-        <p>Bestil en vinprop her<br>Mailen sendes til Jerry Adders agent John Wulff, der tager sig af bestillingerne</p>
-        <form action="mail.php" method="POST">
+        <div id="mail_formular_container" class="hide">
+            <p id="price"></p>
+            <p>Bestil en vinprop her<br>Mailen sendes til Jerry Adders agent John Wulff, der tager sig af bestillingerne</p>
+            <form action="mail.php" method="POST">
 
-            <p>Navn</p>
-            <input type="text" name="name">
-            <p>Din email</p>
-            <input type="text" name="email">
-            <p>Besked</p>
-            <textarea name="message" rows="6" cols="25"></textarea>
-            <br>
-            <input type="submit" value="Send">
-        </form>
+                <p>Navn</p>
+                <input type="text" name="name">
+                <p>Din email</p>
+                <input type="text" name="email">
+                <p>Besked</p>
+                <textarea name="message" rows="6" cols="25"></textarea>
+                <br>
+                <input id="send_email_button" type="submit" value="Send">
+            </form>
+        </div>
     </section>
 
     <footer>
 
     </footer>
-</body>
-
-</html>
+</body></html>
 
 <script>
     document.addEventListener("DOMContentLoaded", start);
@@ -109,6 +109,8 @@
         if (type == "painting") {
             getPaintings();
         }
+
+
 
     }
 
@@ -189,14 +191,19 @@
         }
 
         document.querySelector(".art_single_meassure").textContent = `${content.maal} cm`;
+        console.log("Tilsalg: " + content.tilsalg);
         if (content.tilsalg == "Ja") {
             document.querySelector(".art_single_availability").textContent = "Tilgængeligt værk";
+            console.log("Tilsalg: Svaret er ja!" + content.tilsalg);
         } else if (content.tilsalg == "Nej") {
             document.querySelector(".art_single_availability").textContent = "Værket er ikke tilgængeligt";
+            console.log("Tilsalg: Nej " + content.tilsalg);
         } else if (content.tilsalg == "Ja og vi sender det gerne med posten") {
+            console.log("Tilsalg: Ja skal jeg sende det emd posten? " + content.tilsalg);
             document.querySelector(".art_single_availability").textContent = "Tilgængeligt værk";
             document.querySelector("#price").textContent = content.pris;
 
+            document.querySelector("#mail_formular_container").classList = "";
         }
 
         //alle billeder af kunstværket sættes ind i dette while loop
@@ -219,8 +226,16 @@
 
         getFooter();
 
+        //Denne funktion bruges til dynamisk at sætte højden på sektionens baggrund ud fra indholdet. Som den er nu tager den udgangspunkt i billedet
+        setTimeout(backgroundImageHeight, 100);
+
     }
 
+    function backgroundImageHeight() {
+        let imageHeight = document.querySelector(".art_single_img");
+        console.log("image hieght: " + imageHeight.height);
+        document.querySelector("#art_single_section").style.height = `${imageHeight.height*1.2+250}px`;
+    }
 
 
     function displayItem(s) {
