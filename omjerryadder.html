@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="DA">
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Baumans|Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerry Adder | Maler &#38; Skulptør</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <nav class="main_menu">
+
+    </nav>
+
+    <section id="jerry_top_section" class="section_jerry">
+        <h1 class="jerry_headline" id="jerry_h1"></h1>
+        <div class="col_container">
+            <div class="col">
+                <img class="jerry_img" src="" alt="">
+                <h5 class="jerry_h5" id="jerry_h5_1"></h5>
+                <h5 class="jerry_h5" id="jerry_h5_2"></h5>
+            </div>
+
+            <div class="col">
+                <h4 id="jerry_subheadline"></h4>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="background_img_section_jerry">
+
+        <section id="first_jerry_section" class="section_jerry">
+            <div class="col_container">
+                <div class="col_big">
+                    <img class="jerry_img" src="" alt="">
+                </div>
+
+                <div class="col">
+                    <h2 class="jerry_headline"></h2>
+                    <p class="jerry_p"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="second_jerry_section" class="section_jerry">
+            <div class="col_container">
+
+
+                <div class="col">
+                    <h2 class="jerry_headline"></h2>
+                    <p class="jerry_p"></p>
+                </div>
+                <div class="col_big">
+                    <img class="jerry_img" src="" alt="">
+                </div>
+            </div>
+        </section>
+
+        <section id="third_jerry_section" class="section_jerry">
+            <div class="col_container">
+                <div class="col_big">
+                    <img class="jerry_img" src="" alt="">
+                </div>
+
+                <div class="col">
+                    <h2 class="jerry_headline"></h2>
+                    <p class="jerry_p"></p>
+                </div>
+            </div>
+        </section>
+
+
+    </section>
+
+
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", start);
+
+    //document.querySelector("left_container").addEventListener("click", openNScroll);
+
+    let content = [];
+
+
+    function start() {
+        getJson();
+
+    }
+
+    async function getJson() {
+        getMenu();
+        const url = `http://beansprout.dk/kea/2.semester/tema10/jerryadder/wordpress/wp-json/wp/v2/omjerryadder`;
+        let myJson = await fetch(url);
+        content = await myJson.json();
+
+        visIndhold();
+
+    }
+
+
+    async function getMenu() {
+        const thisNav = await fetch("nav.html");
+        let fetchedNav = await thisNav.text();
+        document.querySelector(".main_menu").innerHTML = fetchedNav;
+        document.querySelector(".burger_icon").addEventListener("click", function() {
+            displayListItems(".burger_item");
+        });
+
+        document.querySelector("#list_item_bikes").addEventListener("click", function() {
+            displayListItems("#dropdown-content1");
+        });
+        getFooter();
+    }
+
+    async function getFooter() {
+        const thisFooter = await fetch("footer.html");
+        let fetchedFooter = await thisFooter.text();
+        document.querySelector("footer").innerHTML = fetchedFooter;
+    }
+
+    function visIndhold() {
+        console.log(content);
+
+        document.querySelectorAll(".section_jerry").forEach((sektion, i) => {
+            console.log(content[0]["billede" + (i + 1)].guid);
+            sektion.querySelector("img").src = content[0]["billede" + (i + 1)].guid;
+            sektion.querySelector(".jerry_headline").textContent = content[0]["overskrift" + (i + 1)];
+            if (i > 0) {
+                sektion.querySelector(".jerry_p").textContent = content[0]["tekst" + (i + 1)];
+            }
+
+
+        })
+
+        document.querySelectorAll(".jerry_h5").forEach((h5, i) => {
+            h5.textContent = content[0]["billede1_tekst" + (i + 1)];
+        })
+        document.querySelector("#jerry_top_section").style.backgroundImage = `url(${content[0].baggrund_top.guid})`;
+        document.querySelector("#background_img_section_jerry").style.backgroundImage = `url(${content[0].baggrund_bund.guid})`;
+
+        document.querySelector("#jerry_subheadline").textContent = content[0].underoverskrift;
+
+    }
+
+
+
+    function displayListItems(s) {
+        document.querySelectorAll(`${s}`).forEach((x, i) => {
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        })
+
+    }
+    //.dropdown
+
+</script>

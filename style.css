@@ -29,7 +29,8 @@ h3,
 h4,
 h5,
 button {
-    font-family: 'Baumans', cursive;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 600;
 }
 
 p {
@@ -58,7 +59,7 @@ a {
 body {
     margin: 0;
     background: var(--main-bg-color);
-    font-family: 'Lora', serif;
+    font-family: 'Comfortaa', cursive;
 
 }
 
@@ -622,6 +623,74 @@ textarea {
     color: var(--main-bg-color);
 }
 
+/* Om Jerry Adder */
+
+#jerry_top_section {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 2;
+    height: 50vw;
+
+}
+
+.section_jerry {
+    padding: 80px;
+}
+
+#jerry_h1 {
+    position: absolute;
+    left: 37%;
+    top: 24%;
+    font-size: 100px;
+    margin: 0;
+    color: var(--main-bg-color);
+}
+
+#jerry_subheadline {
+    margin-top: 46%;
+    font-size: 30px;
+    color: var(--main-bg-color);
+}
+
+.jerry_h5 {
+    font-size: 20px;
+}
+
+#jerry_h5_1 {
+    margin-top: -9vw;
+    width: 24vw;
+    margin-left: 25%;
+}
+
+#jerry_h5_2 {
+    margin-top: -10px;
+    width: 24vw;
+    margin-left: 25%;
+}
+
+#background_img_section_jerry {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: -10%;
+    padding-top: 10%;
+}
+
+.section_jerry h2 {
+    margin-top: 33%;
+}
+
+#first_jerry_section .col_big,
+#third_jerry_section .col_big {
+    margin-right: 15%;
+}
+
+#second_jerry_section .col_big {
+    margin-left: 15%;
+}
+
 /* footer */
 
 #footer {
@@ -701,6 +770,25 @@ textarea {
     #art_single_section {
         height: 80vw;
     }
+
+    /* Om Jerry Adder */
+    #jerry_top_section {
+        height: 40vw;
+
+    }
+
+
+    #jerry_subheadline {
+        margin-top: 50%;
+        font-size: 30px;
+        color: var(--main-bg-color);
+    }
+
+    .jerry_h5 {
+        font-size: 1.2vw;
+    }
+
+
 }
 
 /* Pc responsivitet */
@@ -797,6 +885,21 @@ textarea {
     #art_single_section p {
         font-size: 16px;
         margin: 0;
+    }
+
+    /* Om Jerry Adder */
+
+    #jerry_h1 {
+        position: absolute;
+        left: 37%;
+        top: 24%;
+        font-size: 60px;
+        margin: 0;
+        color: var(--main-bg-color);
+    }
+
+    #jerry_subheadline {
+        font-size: 24px;
     }
 
     /* Footer */
@@ -963,6 +1066,64 @@ textarea {
 
 }
 
+/* Mellemvisning hvor Om Jerry Adder går over til en kolonne */
+
+@media screen and (max-width: 810px) {
+
+    /* Om Jerry Adder */
+    .section_jerry {
+        padding: 30px;
+    }
+
+    #jerry_h1 {
+        position: absolute;
+        left: 57%;
+        top: 34%;
+        font-size: 50px;
+    }
+
+    #jerry_top_section {
+        height: 105vw;
+
+    }
+
+    .section_jerry h2 {
+        margin-top: 30px;
+    }
+
+    .jerry_h5 {
+        font-size: 18px;
+        font-size: 2.5vw;
+    }
+
+    #jerry_h5_1 {
+        margin-top: -17vw;
+        width: 65%;
+    }
+
+    #jerry_h5_2 {
+        width: 65%;
+    }
+
+    #first_jerry_section .col_big,
+    #third_jerry_section .col_big {
+        margin-right: 0%;
+    }
+
+    #second_jerry_section .col_big {
+        margin-left: 0%;
+    }
+
+    .jerry_headline {
+        margin-top: 20px;
+    }
+
+    #jerry_subheadline {
+        margin-top: 40px;
+    }
+
+}
+
 /* Tablet responsivitet */
 
 @media screen and (max-width: 768px) {
@@ -1090,6 +1251,40 @@ textarea {
 
     #art_single_section {
         height: 135vw;
+    }
+
+    /* Om Jerry Adder */
+    #jerry_h1 {
+        position: absolute;
+        left: 57%;
+        top: 30%;
+        font-size: 40px;
+    }
+
+    #jerry_top_section {
+        height: 107vw;
+
+    }
+
+    #jerry_subheadline {
+        margin-top: 30px;
+    }
+
+    .jerry_h5 {
+        font-size: 18px;
+        font-size: 2.5vw;
+    }
+
+    #jerry_h5_1 {
+        margin-top: -17vw;
+        width: 65%;
+        margin-left: 25%;
+    }
+
+    #jerry_h5_2 {
+        margin-top: -10px;
+        width: 65%;
+        margin-left: 25%;
     }
 }
 
