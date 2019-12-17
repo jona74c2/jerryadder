@@ -421,6 +421,10 @@ li img {
 
 }
 
+.art_item_img_container {
+    box-shadow: 1px 3px 10px 2px rgba(0, 0, 0, 0.36);
+}
+
 .art_item_img_container:hover {
     animation: zoomIn 0.25s ease-in-out;
     cursor: pointer;
@@ -514,9 +518,9 @@ li img {
 }
 
 .art_item_headline {
-    margin-top: -50px;
+    margin-top: 6px;
     margin-left: 25px;
-    color: var(--main-bg-color);
+    color: var(--secondary-bg-color);
 }
 
 /* Detail visning her kaldet art_single */
