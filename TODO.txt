@@ -19,5 +19,3 @@ Fix formularen så mailen sendes
 // Evt
 
 Lav navigation ensformigt på mobil
-
-Ændre skulpturer til marmorskulpturer i pods

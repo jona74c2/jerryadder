@@ -372,6 +372,7 @@ li img {
     padding-top: 14vw;
     padding-bottom: 0vw;
     color: var(--split-red-color);
+    height: 34vw;
     /*
     vmin
     vmax
@@ -609,6 +610,7 @@ textarea {
     /* denne farve er 100% gennemsigtig*/
     background-color: hsla(290, 60%, 100%, 0);
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 #send_email_button:hover {
@@ -645,11 +647,13 @@ textarea {
 }
 
 #footer .col {
-    width: 180px;
+
+    width: 450px;
     padding: 0;
-    margin: 0;
+    margin: 0 10%;
     padding-right: 25px;
     font-size: 14px;
+    padding-bottom: 30px;
 }
 
 #footer a {
@@ -789,6 +793,19 @@ textarea {
     #art_single_section p {
         font-size: 16px;
         margin: 0;
+    }
+
+    /* Footer */
+    #footer .col {
+
+        width: 300px;
+        padding: 0;
+        margin: 0 5%;
+        padding-bottom: 30px;
+    }
+
+    #footer p {
+        margin-bottom: 0;
     }
 }
 
@@ -989,6 +1006,17 @@ textarea {
 
     #second_section_frontpage {
         margin-top: -80px;
+        padding-bottom: 100px;
+    }
+
+    #third_section_frontpage {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    #fourth_section_frontpage {
+        padding-top: 100px;
+        height: 105vw;
     }
 
     /* kunst side */
@@ -1030,6 +1058,10 @@ textarea {
         height: 115vw;
     }
 
+    #first_section_frontpage {
+        height: 100vw;
+    }
+
     #third_section_frontpage {
         margin-top: -12%;
     }
@@ -1039,7 +1071,7 @@ textarea {
     .art_list {
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 5%;
-        margin-top: 20px;
+        margin-top: 30px;
     }
 
     .art_item_img_container {
@@ -1066,12 +1098,22 @@ textarea {
     }
 
     #first_section_frontpage {
-        height: 125vw;
+        height: 115vw;
     }
 
+    #second_section_frontpage {
+        padding-top: 80px;
+        padding-bottom: 20px;
+    }
 
     #third_section_frontpage {
-        padding-top: 75px;
+
+        padding-bottom: 50px;
+    }
+
+    #fourth_section_frontpage {
+        padding-top: 70px;
+        padding-bottom: 50px;
     }
 
     /* kunst */
