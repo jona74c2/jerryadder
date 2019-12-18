@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="DA">
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,500,600,700|Montserrat+Alternates:400,500,600|Work+Sans&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stenens Rejse | Jerry Adder | Maler &#38; Skulptør</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <nav class="main_menu">
+
+    </nav>
+
+    <section id="stone_section">
+        <h1 class="stone_headline">Stenens Rejse</h1>
+        <img id="stone_img1" class="stone_img" src="img/Timeline_V1.4.svg" alt="">
+        <!--<img id="stone_img2" class="stone_img hide" src="img/Timeline_V1.3.svg" alt="">-->
+
+    </section>
+
+
+
+    <footer>
+
+    </footer>
+</body></html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", start);
+
+    let content = [];
+
+
+    function start() {
+        getMenu();
+        /*
+        if(window.innerWidth > 840){
+            document.querySelector("#stone_img1").classList.remove("hide");
+        }
+        else{
+           document.querySelector("#stone_img2").classList.remove("hide");
+        }*/
+    }
+
+
+    async function getMenu() {
+        const thisNav = await fetch("nav.html");
+        let fetchedNav = await thisNav.text();
+        document.querySelector(".main_menu").innerHTML = fetchedNav;
+        document.querySelector(".burger_icon").addEventListener("click", function() {
+            displayListItems(".burger_item");
+        });
+
+        document.querySelector("#list_item_bikes").addEventListener("click", function() {
+            displayListItems("#dropdown-content1");
+        });
+        getFooter();
+    }
+
+    async function getFooter() {
+        const thisFooter = await fetch("footer.html");
+        let fetchedFooter = await thisFooter.text();
+        document.querySelector("footer").innerHTML = fetchedFooter;
+    }
+
+
+
+
+
+    function displayListItems(s) {
+        document.querySelectorAll(`${s}`).forEach((x, i) => {
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        })
+
+    }
+    //.dropdown
+
+</script>

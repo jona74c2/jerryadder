@@ -691,6 +691,13 @@ textarea {
     margin-left: 15%;
 }
 
+/* stenens rejse */
+
+.stone_headline {
+    margin: 4% 10%;
+    font-size: 50px;
+}
+
 /* footer */
 
 #footer {
@@ -900,6 +907,12 @@ textarea {
 
     #jerry_subheadline {
         font-size: 24px;
+    }
+
+    /* stenens rejse */
+    .stone_headline {
+        margin: 4% 10%;
+        font-size: 30px;
     }
 
     /* Footer */
