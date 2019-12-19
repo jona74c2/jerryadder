@@ -117,7 +117,9 @@
     <footer>
 
     </footer>
-</body></html>
+</body>
+
+</html>
 
 <script>
     document.addEventListener("DOMContentLoaded", start);
@@ -136,7 +138,7 @@
                 window.open('detalje.html?id=132&type=bronze', '_self', false);
             }
             if (i == 3) {
-                //window.open('stenensrejse.html', '_self', false);
+                window.open('stenensrejse.html', '_self', false);
             }
 
 
@@ -227,7 +229,7 @@
                 burgerItem.style.zIndex = "4";
                 burgerItem.style.left = "50vw";
                 burgerItem.style.transform = "translateX(-50%)";
-                burgerItem.style.width = "170px";
+                burgerItem.style.width = "250px";
                 let margin = (index + 1) * 45 + "px";
                 console.log("margin: " + margin);
                 burgerItem.style.marginTop = margin;
@@ -280,10 +282,10 @@
         document.querySelector("#frontpage_between_sections_img").src = content[0].mellemsektions_billede.guid;
     }
 
-    function setBlueDot(blue) {
+    function setBlueDot() {
         document.querySelectorAll(".dot").forEach((dot, i) => {
             dot.style.backgroundColor = "white";
-            if (blue == i) {
+            if (imgCounter == i) {
                 dot.style.backgroundColor = "#11505D";
             }
         })
@@ -310,7 +312,7 @@
             }
         })
 
-        setBlueDot(imgCounter);
+        setBlueDot();
     }
 
     function displayListItems(s) {

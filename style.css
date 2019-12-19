@@ -14,6 +14,7 @@ font-family: 'Lora', serif;
 :root {
     --main-bg-color: white;
     --secondary-bg-color: black;
+    --header-color: #2f2f2f;
 
     /* splitkomplimentære farver */
     --split-turquoise-color: #11505D;
@@ -95,7 +96,7 @@ ul {
     margin-bottom: -6px;
 
     display: flex;
-    background-color: var(--secondary-bg-color);
+    background-color: var(--header-color);
 }
 
 li {
@@ -564,7 +565,7 @@ li img {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /*display: grid;
+    /* display: grid;
     grid-gap: 2%;
     grid-template-columns: repeat(3, 1fr);
     */
@@ -703,7 +704,7 @@ textarea {
 #footer {
     display: flex;
     justify-content: center;
-    background-color: var(--secondary-bg-color);
+    background-color: var(--header-color);
     color: var(--main-bg-color);
     position: relative;
     z-index: 2;
