@@ -171,6 +171,7 @@ li img {
     margin-bottom: 12.5%;
     position: relative;
     z-index: 2;
+    padding-bottom: 20px;
 }
 
 #bg_video {
@@ -669,6 +670,10 @@ textarea {
     margin-top: -10px;
     width: 24vw;
     margin-left: 25%;
+}
+
+.jerry_p {
+    line-height: 1.4;
 }
 
 #background_img_section_jerry {
